@@ -41,7 +41,7 @@ Next, I iterated and XORed `(^)` each number in both halves with the same values
 ### XOR
 <img width="423" height="98" alt="image" src="https://github.com/user-attachments/assets/25de1d5f-4a9c-4534-b6ad-829d12ce4542" />
 
-Now I need to reverse the bitwise NOT `(~)` for both halves. The bitwise NOT operation is self-inverse, which means applying `~` twice would give you the original value. After the XOR operation, I stepped through each character in both halves and applied a bitwise NOT operation `(~)`.
+Now I need to reverse the bitwise NOT `(~)` for both halves. The bitwise NOT operation is similar to XOR and is self-inverse, which means applying `~` twice would give you the original value. After the XOR operation, I stepped through each character in both halves and applied a bitwise NOT operation `(~)`.
 ### Bitwise NOT
 <img width="310" height="59" alt="image" src="https://github.com/user-attachments/assets/eb730a08-c754-464a-ab1f-9957fcea5be7" />
 
