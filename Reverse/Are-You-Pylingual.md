@@ -6,7 +6,7 @@ This challenge provides you with two files, "pylinguese.pyc" and "output.txt." O
 ### Output.txt
 <img width="1266" height="656" alt="image" src="https://github.com/user-attachments/assets/35d32e1b-8551-4a59-aa97-a233920df164" />
 
-This did not help us, so instead, I opened "pylinguese.pyc" in Binary Ninja to see what we were working with. Opening the file up, I immediately noticed the text `"flag.txt"` and `"MASONCC IS THE BEST CLUB EVER,"` but everything else was not readable.
+This did not help me, so instead, I opened "pylinguese.pyc" in Binary Ninja to see what we were working with. Opening the file up, I immediately noticed the text `"flag.txt"` and `"MASONCC IS THE BEST CLUB EVER,"` but everything else was not readable.
 ### pylinguese.pyc in Binary Ninja
 <img width="1130" height="780" alt="image" src="https://github.com/user-attachments/assets/dcd285a4-a977-4379-9387-9721e4aca0ec" />
 
