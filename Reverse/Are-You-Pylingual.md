@@ -10,13 +10,13 @@ This did not help us, so instead, I opened "pylinguese.pyc" in Binary Ninja to s
 ### pylinguese.pyc in Binary Ninja
 <img width="1130" height="780" alt="image" src="https://github.com/user-attachments/assets/dcd285a4-a977-4379-9387-9721e4aca0ec" />
 
-After looking up what a .pyc file is and what to do with it, I learned that a .pyc file contains the compiled bytecode of the source file for python. Using a really useful website I found, https://pylingual.io/, I was able to decompile the code into human readable code.
+After looking up what a .pyc file is and what to do with it, I learned that a .pyc file contains the compiled bytecode of the source file for Python. Using an online Python bytecode decompiler I found, https://pylingual.io/, I was able to decompile the code into human readable code.
 ### pylinguese.pyc Decompiled
 <img width="502" height="534" alt="image" src="https://github.com/user-attachments/assets/825884e0-c1d6-4edd-83c0-02e04aa4fd93" />
 
-Awesome! Now we could start the proccess of understanding what the code does and how to obtain the flag!
+Awesome! Now we could start the process of understanding what the code does and how to obtain the flag!
 ## Understanding the code
-This part was a little greuling for me becausae I had to learn/relearn python before I could continue on and understand what was happening. After a full day of learning, I decided it was time to give the challenge a shot. Looking into the code, it seems that the first half is taking the words `"MASONCC IS THE BEST CLUB EVER,"` transforming it into ASCII art with pyfiglet, placing the flag within the ASCII art seen below, and joining everything together into a string.
+This part was a little grueling for me because I had to learn/relearn Python before I could continue on and understand what was happening. After a full day of learning, I decided it was time to give the challenge a shot. Looking into the code, it seems that the first half is taking the words `"MASONCC IS THE BEST CLUB EVER,"` transforming it into ASCII art with pyfiglet, placing the flag within the ASCII art seen below, and joining everything together into a string.
 ### First half
 <img width="450" height="269" alt="image" src="https://github.com/user-attachments/assets/cee4ad3e-f6d9-4ea5-afe1-ef99f2654e7b" />
 
@@ -25,15 +25,15 @@ The second half of the code is where the obfuscation happens. The string is firs
 <img width="495" height="154" alt="image" src="https://github.com/user-attachments/assets/60db693c-4a3b-4c3c-9ae4-80cc90fa5b93" />
 
 ## Reversing the output/Writing Code
-Now we understand that the output is the flag obfuscated several times in different ways, all of wich is fully reversible!
+Now we understand that the output is the flag obfuscated several times in different ways, all of which is fully reversible!
 
 This part was a LOT of trial and error for me, but I will go over the major steps I took to reverse the operations done to the flag.
 
-I started with modifying the "output.txt" file by removing `"output = "` and the `brackets` so it doesn't interfere with the code and I just have the raw numbers **<ins>(I manually edited the file, I did not include this part in my code)<ins>**. Then, I stared with opened and reading the file into an array converting each number into an integer.
+I started with modifying the "output.txt" file by removing `"output = "` and the `brackets` so it doesn't interfere with the code and I just have the raw numbers **<ins>(I manually removed them from the file, I did not include this part in my code)</ins>**. After that, I started with opening and parsing the file into an array converting each number into an integer.
 ### Reading the output
 <img width="463" height="76" alt="image" src="https://github.com/user-attachments/assets/033fcbfc-2d66-4b66-b18a-801c91d7c779" />
 
-After that, We need to undo all the steps backwards in order, starting with splitting the array in half and assigning them to which half they are. **I assigned the halves in reverse order for the order they were originally in, the second half of the output is set as `first_half` and vice versa to make it easier to understand what order they will be in at the end.** I achieved this with the section below.
+After that, we need to undo all the steps backwards in order, starting with splitting the array in half and assigning them to which half they are. **I assigned the halves in reverse order for the order they were originally in, the second half of the output is set as `first_half` and vice versa to make it easier to understand what order they will be in at the end.** I achieved this with the section below.
 ### Splitting the array in half
 <img width="306" height="64" alt="image" src="https://github.com/user-attachments/assets/26b50f99-1d72-48a4-aeeb-092d1d3697a9" />
 
@@ -41,7 +41,7 @@ Next, I iterated and XORed `(^)` each number in both halves with the same values
 ### XOR
 <img width="423" height="98" alt="image" src="https://github.com/user-attachments/assets/25de1d5f-4a9c-4534-b6ad-829d12ce4542" />
 
-Now I need to reverse the bitwise NOT `(~)` for both halves. This can be done by doing another bitwise NOT operation of both halves since it is its own inverse. After the XOR operation, I stepped through each character in both halves and applied a bitwise NOT operation `(~)`.
+Now I need to reverse the bitwise NOT `(~)` for both halves. The bitwise NOT operation is self-inverse, which means applying `~` twice would give you the original value. After the XOR operation, I stepped through each character in both halves and applied a bitwise NOT operation `(~)`.
 ### Bitwise NOT
 <img width="310" height="59" alt="image" src="https://github.com/user-attachments/assets/eb730a08-c754-464a-ab1f-9957fcea5be7" />
 
@@ -59,7 +59,8 @@ Success!
 
 **pctf{obFusc4ti0n_i5n't_EncRypt1oN}**
 
-I thought this challenge was fun and pushed my boundaries of what i knew and needed to learn. I learned a lot about python and obfuscation techniques as well as getting a couple of new tools under my belt now!
+This challenge really reinforced the importance of understanding reversible operations in obfuscation methods and how obfuscation doesn't mean the data is encrypted. The challenge looked complicated at first, but after breaking it down in steps and analyzing it, it was a matter of understanding what each step does and how to tackle it. Overall, this was a great challenge for learning Python and stepping into reverse engineering and adding a couple of new tools under my belt!
+
 
 # Full Code
 ```
