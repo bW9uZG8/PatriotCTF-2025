@@ -3,7 +3,7 @@ Writeups for PatriotCTF
 
 ## Reverse Engineering
 
-- [Are You Pylingual?](reverse/are-you-pylingual)
+- [Are You Pylingual?](Reverse/Are-You-Pylingual?)
 
 ## Forensics
 - [Word Sea Adventures](Forensics/Word-Sea-Adventures)
