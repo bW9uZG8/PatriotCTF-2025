@@ -31,4 +31,4 @@ We can isolate the curl requests with the filter `http.user_agent == "CURL"`. An
 
 Lastly, I made sure that all my packets were sorted in order by time and extracted each value. This gives the values: [80 67 84 70 123 116 49 109 51 95 116 48 95 103 51 55 95 53 119 48 49 125]. These looked like ASCII values to me, so I immediately decoded them. Doing so reveals the flag!
 
-PCTF{t1m3_t0_g37_5w01}
+**PCTF{t1m3_t0_g37_5w01}**
